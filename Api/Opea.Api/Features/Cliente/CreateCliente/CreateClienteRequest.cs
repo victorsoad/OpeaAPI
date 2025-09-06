@@ -10,7 +10,7 @@ namespace Opea.Api.Features
     {
         public CreateClienteRequest() { }
 
-        public string NomeEmpresa { get; set; }
+        public string NomeEmpresa { get; set; } = string.Empty;
 
         public PorteEmpresa PorteEmpresa { get; set; }
     }

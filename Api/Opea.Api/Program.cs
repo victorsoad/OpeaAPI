@@ -1,4 +1,5 @@
 using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Opea.Api.Extensions;
 using Opea.Api.Features;
@@ -18,6 +19,10 @@ internal class Program
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        
+        // Configura o FluentValidation para integração com ASP.NET Core
+        builder.Services.AddFluentValidationAutoValidation();
+        builder.Services.AddFluentValidationClientsideAdapters();
 
         // Adiciona o MediatR e registra os handlers da camada de Application
         builder.Services.AddMediatR(cfg =>
@@ -25,7 +30,7 @@ internal class Program
             cfg.RegisterServicesFromAssemblies(typeof(ClienteProjectionSyncService).GetTypeInfo().Assembly);
         });
 
-        // Adiciona o FluentValidation para valida��o autom�tica dos requests
+        // Adiciona o FluentValidation para validação automática dos requests
         builder.Services.AddValidatorsFromAssemblyContaining<CreateClienteRequestValidator>();
 
         // Adiciona o DbContext para SQLite
@@ -33,10 +38,10 @@ internal class Program
             options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"),
                 b => b.MigrationsAssembly("Opea.Infrastructure")));
 
-        // Adiciona o servi�o de sincroniza��o de proje��o
+        // Adiciona o serviço de sincronização de projeção
         builder.Services.AddScoped<ClienteProjectionSyncService>();
 
-        // Adiciona os reposit�rios para inje��o de depend�ncia
+        // Adiciona os repositórios para injeção de dependência
         builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 
         var app = builder.Build();
