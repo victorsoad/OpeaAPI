@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using MediatR;
 
 namespace Opea.Api.Features
 {
@@ -16,7 +17,7 @@ namespace Opea.Api.Features
 
             // Regra para a propriedade PorteEmpresa.
             RuleFor(request => request.PorteEmpresa)
-                .IsInEnum().WithMessage("O porte da empresa é inválido.");
+                .IsInEnum().WithMessage("O porte da empresa é inválido. Valores aceitos são: 1 - Pequena, 2 - Media, 3 - Grande.");
         }
     }
 }
