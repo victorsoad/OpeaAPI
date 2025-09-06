@@ -1,0 +1,30 @@
+Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.sln.docstates
+*.pdb
+*.orig
+*.opensdf
+*.docstates
+*.ide-version
+*.log
+[Dd]ebug/
+[Rr]elease/
+
+NuGet
+packages/
+*.nupkg
+.DS_Store
+
+Temporary files
+temp/
+
+Build files
+*.tlog
+*.lastbuildstate
+*.bak
+
+`eof`
