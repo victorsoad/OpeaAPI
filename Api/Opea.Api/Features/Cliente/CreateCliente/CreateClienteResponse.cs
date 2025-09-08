@@ -1,11 +1,13 @@
-﻿namespace Opea.Api.Features
+﻿using Opea.Domain.Enums;
+
+namespace Opea.Api.Features
 {
     /// <summary>
     /// Representa a resposta após a criação de um novo cliente.
     /// </summary>
     public record CreateClienteResponse(
         Guid Id,
-        string NomeDaEmpresa,
-        string PorteDaEmpresa
+        string NomeEmpresa,
+        PorteEmpresa PorteEmpresa
     );
 }

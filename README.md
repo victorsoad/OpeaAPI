@@ -126,8 +126,8 @@ Content-Type: application/json
 ```json
 {
   "id": "123e4567-e89b-12d3-a456-426614174000",
-  "nomeDaEmpresa": "Empresa Exemplo Ltda",
-  "porteDaEmpresa": "Pequena"
+  "NomeEmpresa": "Empresa Exemplo Ltda",
+  "PorteEmpresa": "Pequena"
 }
 ```
 
@@ -141,8 +141,8 @@ GET /api/clientes
 [
   {
     "id": "123e4567-e89b-12d3-a456-426614174000",
-    "nomeDaEmpresa": "Empresa Exemplo Ltda",
-    "porteDaEmpresa": "Pequena"
+    "NomeEmpresa": "Empresa Exemplo Ltda",
+    "PorteEmpresa": "Pequena"
   }
 ]
 ```

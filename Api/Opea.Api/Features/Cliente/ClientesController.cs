@@ -32,7 +32,7 @@ namespace Opea.Api.Features
             var command = new CreateClienteCommand(request.NomeEmpresa, request.PorteEmpresa);
             var cliente = await _mediator.Send(command);
 
-            var response = new CreateClienteResponse(cliente.Id, cliente.NomeEmpresa, cliente.PorteEmpresa.ToString());
+            var response = new CreateClienteResponse(cliente.Id, cliente.NomeEmpresa, cliente.PorteEmpresa);
             return CreatedAtAction(nameof(GetCliente), new { id = response.Id }, response);
         }
 
@@ -51,7 +51,7 @@ namespace Opea.Api.Features
             var command = new UpdateClienteCommand(id, request.NomeEmpresa, request.PorteEmpresa);
             var cliente = await _mediator.Send(command);
 
-            var response = new UpdateClienteResponse(cliente.Id, cliente.NomeEmpresa, cliente.PorteEmpresa.ToString());
+            var response = new UpdateClienteResponse(cliente.Id, cliente.NomeEmpresa, cliente.PorteEmpresa);
             return Ok(response);
         }
 
