@@ -50,8 +50,8 @@ namespace Opea.Tests.Features
             createdResult!.ActionName.Should().Be(nameof(_controller.GetCliente));
             var response = createdResult.Value as CreateClienteResponse;
             response.Should().NotBeNull();
-            response!.NomeDaEmpresa.Should().Be(request.NomeEmpresa);
-            response.PorteDaEmpresa.Should().Be(request.PorteEmpresa.ToString());
+            response!.NomeEmpresa.Should().Be(request.NomeEmpresa);
+            response.PorteEmpresa.Should().Be(request.PorteEmpresa);
         }
         
         [Fact]
@@ -81,7 +81,7 @@ namespace Opea.Tests.Features
             okResult!.StatusCode.Should().Be(StatusCodes.Status200OK);
             var response = okResult.Value as UpdateClienteResponse;
             response.Should().NotBeNull();
-            response!.NomeDaEmpresa.Should().Be(request.NomeEmpresa);
+            response!.NomeEmpresa.Should().Be(request.NomeEmpresa);
         }
         /*
         [Fact]

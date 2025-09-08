@@ -15,6 +15,20 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        // Configura o CORS (Cross-Origin Resource Sharing)
+        // Cria uma política que permite origens específicas do front-end
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowFrontend",
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:3000", "https://localhost:3000")                    
+                           .AllowAnyHeader()
+                           .AllowAnyMethod()
+                           .AllowCredentials();
+                });
+        });
+
         // Add services to the container.
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
@@ -42,7 +56,7 @@ internal class Program
         builder.Services.AddScoped<ClienteProjectionSyncService>();
 
         // Adiciona os repositórios para injeção de dependência
-        builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+        builder.Services.AddScoped<IClienteRepository, ClienteRepository>();       
 
         var app = builder.Build();
 
@@ -60,6 +74,10 @@ internal class Program
         app.UseGlobalExceptionMiddleware();
 
         app.UseHttpsRedirection();
+        
+        // Aplica a política de CORS
+        app.UseCors("AllowFrontend");
+        
         app.UseAuthorization();
         app.MapControllers();
 
